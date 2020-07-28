@@ -14,6 +14,7 @@ var addInts = function (num1, num2) {
     return total;
 }
 
+//End points for array retrieval
 app.get('/add', function (req, res) {
     var num1 = req.query.num1;
     var num2 = req.query.num2;
@@ -22,87 +23,44 @@ app.get('/add', function (req, res) {
 })
 
 //finds account/s matching provided name
-app.get('/find_account_name', function (req, res) {
+app.get('/search_account_name', function (req, res) {
     let name = req.query.name;
-    let displayString = "";
-    let found = false;
-    console.log(accounts.length);
+    let nameMatches = [];
     for (i = 0; i < accounts.length; i++) {
         if (name.toUpperCase() == (accounts[i].name).toUpperCase()) {
-            let matchID = accounts[i].id;
-            let matchName = accounts[i].name;
-            let matchDep = accounts[i].deposit;
-            displayString = displayString + "<p>Matching account found:</p><p>Account ID: " + matchID + "<br>Name: " + matchName + "<br>Deposit: " + matchDep + "</p>";
-            found = true;
+            nameMatches.push(accounts[i]);
         }
     }
-    if (found == true) {
-        res.send(displayString);
-    }
-    else {
-        res.send("No matching account found. ");
-    }
+    res.json(nameMatches);
 })
 
 //returns accounts matching provided ID
-app.get('/find_account_ID', function (req, res) {
+app.get('/search_account_ID', function (req, res) {
     let id = req.query.id;
-    let found = false;
-    let displayString = "";
+    let idMatches = [];
     for (i = 0; i < accounts.length; i++) {
         if (id == accounts[i].id) {
-            let matchID = accounts[i].id;
-            let matchName = accounts[i].name;
-            let matchDep = accounts[i].deposit;
-            displayString = displayString + "<p>Matching account found:</p><p>Account ID: " + matchID + "<br>Name: " + matchName + "<br>Deposit: " + matchDep + "</p>";
-            found = true;
+            idMatches.push(accounts[i]);
         }
     }
-    if (found == true) {
-        res.send(displayString);
-    }
-    else {
-        res.send("No matching account found. ");
-    }
+    res.json(idMatches);
 })
 
-//finds accounts matching provided deposit amount
-app.get('/find_account_deposit', function (req, res) {
+//retrieves accounts matching provided deposit amount
+app.get('/search_account_deposit', function (req, res) {
     let deposit = req.query.deposit;
-    let displayString = "";
-    let found = false;
+    let depMatches = [];
     for (i = 0; i < accounts.length; i++) {
         if (parseInt(deposit) == parseInt(accounts[i].deposit)) {
-            let matchID = accounts[i].id;
-            let matchName = accounts[i].name;
-            let matchDep = accounts[i].deposit;
-            displayString = displayString + "<p>Matching account found:</p><p>Account ID: " + matchID + "<br>Name: " + matchName + "<br>Deposit: " + matchDep + "</p>";
-            found = true;
+            depMatches.push(accounts[i]);
         }
     }
-    if (found == true) {
-        res.send(displayString);
-    }
-    else {
-        res.send("No matching account found. ");
-    }
+    res.json(depMatches);
 })
 
 //retrieves all accounts
-app.get('/find_accounts_all', function (req, res) {
-    let displayString = "";
-    if (accounts.length > 0) {
-        for (i = 0; i < accounts.length; i++) {
-            let matchID = accounts[i].id;
-            let matchName = accounts[i].name;
-            let matchDep = accounts[i].deposit;
-            displayString = displayString + "<p>Account ID: " + matchID + "<br>Name: " + matchName + "<br>Deposit: " + matchDep + "</p>";
-        }
-        res.send(displayString);
+app.get('/list_all_accounts', function (req, res) {
 
-    }
-    else {
-        res.send("Account list empty.");
-    }
+    res.json(accounts);
 
 })
