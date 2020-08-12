@@ -10,7 +10,7 @@ $(document).ready(function(){
         }
         $.get("/add",numbers,function(data){
             console.log('Data has returned:'+ data)
-            $('$result').val(data);
+            $('#result').val(data);
         });
 
     })
