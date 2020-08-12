@@ -1,9 +1,52 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset'"UTF-8">
-    <title>SIT725 Prac 2: Static Page</title>
+    <title>SIT725 Prac 3: My Cloud Service - front end</title>
+    <script src="env.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
+
 <body>
-    <h1>SIT725 example static page (for prac 2)</h1>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">Logo</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>My Cloud service front end</h1>
+    <h2>Use the online calculator!</h2>
+    <div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input value="" id="number1" type="number" class="validate">
+                <label class="active" for="number1">Number one</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input value="" id="number2" type="number" class="validate">
+                <label class="active" for="number2">Number two</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input value="" id="result">
+                <label class="active" for="result">Result</label>
+            </div>
+        </div>
+        <a= id='calculateBtn' class="waves-effect waves-light btn">Calculate</a>
+    </div>
 </body>
+
 </html>

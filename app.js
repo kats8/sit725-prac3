@@ -1,15 +1,20 @@
 
 var express = require('express');
+var moment = require('moment');
+
 var app = express();
-let accounts = [{ id: 1, name: 'alex', deposit: 5 },
-{ id: 2, name: 'sarah', deposit: 5 },
-{ id: 3, name: 'jim', deposit: 15 }];
+
+var log=function(message){
+    var time=moment().format();
+    console.log('[Server]@'+time+' '+message);
+}
 
 app.use(express.static(__dirname + '/public'));
 //listen to a particular port (default 3000)
 let port = 3000;
 app.listen(port)
 
+//Coding for calculator
 let addInts = function (num1, num2) {
     let total = parseInt(num1) + parseInt(num2);
     return total;
@@ -20,8 +25,14 @@ app.get('/add', function (req, res) {
     var num1 = req.query.num1;
     var num2 = req.query.num2;
     var total = addInts(num1, num2);
-    res.send('The total of ' + num1 + ' and ' + num2 + ' is ' + total);
+    res.send(' '+total+' ');
 })
+
+//coding for accounts querying
+let accounts = [{ id: 1, name: 'alex', deposit: 5 },
+{ id: 2, name: 'sarah', deposit: 5 },
+{ id: 3, name: 'jim', deposit: 15 }];
+
 
 //finds account/s matching provided name - ARRAY
 app.get('/search_account_name', function (req, res) {
