@@ -1,5 +1,7 @@
 var express = require('express')
 var app = express()
+
+//creating accounts to be used by account retrieval function
 let accounts = [{ id: 1, name: 'alex', deposit: 5 },
 { id: 2, name: 'sarah', deposit: 5 },
 { id: 3, name: 'jim', deposit: 15 }];
@@ -9,6 +11,7 @@ app.use(express.static(__dirname + '/public'));
 var port = 3000;
 app.listen(port)
 
+//--------coding for calculator/adder------------------
 var addInts = function (num1, num2) {
     var total = parseInt(num1) + parseInt(num2);
     return total;
@@ -22,6 +25,7 @@ app.get('/add', function (req, res) {
     res.send('The total of ' + num1 + ' and ' + num2 + ' is ' + total);
 })
 
+//--------coding for accounts retrieval--------------------------
 //finds account/s matching provided name
 app.get('/search_account_name', function (req, res) {
     let name = req.query.name;

@@ -14,6 +14,7 @@ app.use(express.static(__dirname + '/public'));
 let port = 3000;
 app.listen(port)
 
+/*blocking out calculator code here to experiment running calculator service via a different port/file
 //Coding for calculator
 let addInts = function (num1, num2) {
     let total = parseInt(num1) + parseInt(num2);
@@ -27,6 +28,7 @@ app.get('/add', function (req, res) {
     var total = addInts(num1, num2);
     res.send(' '+total+' ');
 })
+*/
 
 //coding for accounts querying
 let accounts = [{ id: 1, name: 'alex', deposit: 5 },

@@ -8,7 +8,7 @@ $(document).ready(function(){
             num1:number1,
             num2:number2
         }
-        $.get("/add",numbers,function(data){
+        $.get("http://localhost:4000/add",numbers,function(data){
             console.log('Data has returned:'+ data)
             $('#result').val(data);
         });
